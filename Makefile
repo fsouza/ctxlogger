@@ -6,7 +6,7 @@ all: test
 
 test: lint gotest
 
-coverage:
+coverage: testdeps
 	go test -coverprofile coverage.txt -covermode=atomic
 
 lint: testdeps
