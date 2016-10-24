@@ -13,7 +13,7 @@ lint: testdeps
 	go get github.com/alecthomas/gometalinter
 	gometalinter --install --vendored-linters
 	go install
-	gometalinter -j 4 --enable=misspell --enable=gofmt --enable=unused --disable=gas --disable=interfacer --disable=gocyclo --deadline=10m --tests
+	gometalinter -j 4 --enable-all --line-length=120 --deadline=10m --tests
 
 gotest: testdeps
 	go test
