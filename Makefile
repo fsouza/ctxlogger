@@ -7,7 +7,7 @@ all: test
 test: lint gotest
 
 coverage: testdeps
-	go test -coverprofile coverage.txt -covermode=atomic
+	go test -race -coverprofile coverage.txt -covermode=atomic
 
 lint: testdeps
 	go get github.com/alecthomas/gometalinter
@@ -16,7 +16,7 @@ lint: testdeps
 	gometalinter -j 4 --enable-all --line-length=120 --deadline=10m --tests
 
 gotest: testdeps
-	go test
+	go test -race
 
 testdeps:
 	go get -d -t
