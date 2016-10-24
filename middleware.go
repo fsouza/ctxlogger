@@ -13,7 +13,7 @@ import (
 )
 
 // ContextKey is the key used by the middleware to set the logger.
-const ContextKey = "ctxlogger"
+var ContextKey = &struct{ key string }{key: "ctxlogger"}
 
 // ContextLogger takes the logger and returns the middleware that will always
 // add the logger to the request context. It also expands the logger with any
