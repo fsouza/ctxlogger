@@ -54,7 +54,7 @@ func (s *SimpleService) Middleware(h http.Handler) http.Handler {
 func (s *SimpleService) Endpoints() map[string]map[string]http.HandlerFunc {
 	return map[string]map[string]http.HandlerFunc{
 		"/most-popular/{resourceType}/{section}/{timeframe}": {
-			"GET": server.JSONToHTTP(s.GetMostPopular).ServeHTTP,
+			"GET": server.JSONToHTTP(s.getMostPopular).ServeHTTP,
 		},
 		"/cats": {
 			"GET": s.GetCats,

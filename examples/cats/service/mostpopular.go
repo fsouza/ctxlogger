@@ -8,7 +8,7 @@ import (
 	"github.com/fsouza/ctxlogger"
 )
 
-func (s *SimpleService) GetMostPopular(r *http.Request) (int, interface{}, error) {
+func (s *SimpleService) getMostPopular(r *http.Request) (int, interface{}, error) {
 	logger := r.Context().Value(ctxlogger.ContextKey).(*logrus.Logger)
 	logger.WithField("handler", "most-popular").Error("where are the popular cats?!")
 	resourceType := web.Vars(r)["resourceType"]
