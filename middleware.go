@@ -34,8 +34,11 @@ func varsLogger(vars map[string]string, logger *logrus.Logger) *logrus.Logger {
 	newLogger := logrus.Logger{
 		Out:       logger.Out,
 		Formatter: logger.Formatter,
-		Hooks:     logger.Hooks,
+		Hooks:     make(logrus.LevelHooks),
 		Level:     logger.Level,
+	}
+	for level, hooks := range logger.Hooks {
+		newLogger.Hooks[level] = append([]logrus.Hook(nil), hooks...)
 	}
 	newLogger.Hooks.Add(&varsLogHook{vars})
 	return &newLogger
