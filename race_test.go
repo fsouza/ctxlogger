@@ -21,11 +21,12 @@ func TestVarsLoggerIsSafe(t *testing.T) {
 	logger.Level = logrus.DebugLevel
 	logger.Formatter = &logrus.JSONFormatter{}
 	logger = varsLogger(map[string]string{"name": "gopher"}, logger)
+	lentry := logger.WithField("some", "thing")
 	var wg sync.WaitGroup
 	for i := 0; i < N; i++ {
 		wg.Add(1)
 		go func(i int) {
-			logger.WithField("i", i).Info("be advised")
+			lentry.Info("be advised")
 			wg.Done()
 		}(i)
 	}
