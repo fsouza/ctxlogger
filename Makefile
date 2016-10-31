@@ -13,6 +13,7 @@ lint: testdeps
 	go get github.com/alecthomas/gometalinter
 	gometalinter --install --vendored-linters
 	go install
+	go list -f '{{.TestImports}}' | sed -e 's/\[\(.*\)\]/\1/' | tr ' ' '\n' | grep '^.*\..*/.*$$' | xargs go install
 	gometalinter -j 4 --enable-all --line-length=120 --deadline=10m --tests
 
 gotest: testdeps
