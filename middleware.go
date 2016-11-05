@@ -16,13 +16,25 @@ import (
 var ContextKey = &struct{ key string }{key: "ctxlogger"}
 
 // ContextLogger takes the logger and returns the middleware that will always
-// add the logger to the request context. It also expands the logger with any
-// path variable on the given request.
+// add the logger to the request context.
+//
+// It also expands the logger with any path variable on the given request
+// (using path variables as defined with Gizmo).
+//
+// Last, but not least, it also tracks request ids using the header
+// X-Request-Id.
 func ContextLogger(baseLogger *logrus.Logger) func(h http.Handler) http.Handler {
 	return func(h http.Handler) http.Handler {
 		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 			logger := baseLogger
-			if vars := web.Vars(r); len(vars) > 0 {
+			vars := web.Vars(r)
+			if reqID := r.Header.Get("X-Request-Id"); reqID != "" {
+				if vars == nil {
+					vars = make(map[string]string)
+				}
+				vars["requestId"] = reqID
+			}
+			if len(vars) > 0 {
 				logger = varsLogger(vars, baseLogger)
 			}
 			h.ServeHTTP(w, r.WithContext(context.WithValue(r.Context(), ContextKey, logger)))

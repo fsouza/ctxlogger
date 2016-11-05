@@ -21,11 +21,13 @@ import (
 func TestContextLoggerMiddleware(t *testing.T) {
 	var tests = []struct {
 		testCase    string
+		header      http.Header
 		vars        map[string]string
 		wantLogLine map[string]string
 	}{
 		{
 			"request with vars",
+			http.Header{},
 			map[string]string{"jobId": "some-job", "limit": "3"},
 			map[string]string{
 				"level": "info",
@@ -35,11 +37,46 @@ func TestContextLoggerMiddleware(t *testing.T) {
 			},
 		},
 		{
+			"request with vars and id",
+			http.Header{"X-Request-Id": []string{"request-123"}},
+			map[string]string{"jobId": "some-job", "limit": "3"},
+			map[string]string{
+				"level":     "info",
+				"msg":       "received a nice request!",
+				"jobId":     "some-job",
+				"limit":     "3",
+				"requestId": "request-123",
+			},
+		},
+		{
+			"request with vars and id - override",
+			http.Header{"X-Request-Id": []string{"request-123"}},
+			map[string]string{"jobId": "some-job", "limit": "3", "requestId": "request-1234"},
+			map[string]string{
+				"level":     "info",
+				"msg":       "received a nice request!",
+				"jobId":     "some-job",
+				"limit":     "3",
+				"requestId": "request-123",
+			},
+		},
+		{
 			"request with no vars",
+			http.Header{},
 			nil,
 			map[string]string{
 				"level": "info",
 				"msg":   "received a nice request!",
+			},
+		},
+		{
+			"request with no vars and id",
+			http.Header{"X-Request-Id": []string{"request-123"}},
+			nil,
+			map[string]string{
+				"level":     "info",
+				"msg":       "received a nice request!",
+				"requestId": "request-123",
 			},
 		},
 	}
@@ -51,6 +88,7 @@ func TestContextLoggerMiddleware(t *testing.T) {
 	for _, test := range tests {
 		t.Run(test.testCase, func(t *testing.T) {
 			req, _ := http.NewRequest(http.MethodGet, "/something", nil)
+			req.Header = test.header
 			web.SetRouteVars(req, test.vars)
 			rec := httptest.NewRecorder()
 			var b bytes.Buffer
