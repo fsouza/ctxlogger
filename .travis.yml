@@ -1,8 +1,8 @@
 language: go
 sudo: false
 go:
-  - 1.7.4
-  - 1.8beta2
+  - 1.7.x
+  - 1.8rc2
   - tip
 install:
   - make testdeps
