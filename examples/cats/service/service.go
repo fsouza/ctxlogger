@@ -6,8 +6,8 @@ import (
 	"github.com/NYTimes/gizmo/examples/nyt"
 	"github.com/NYTimes/gizmo/server"
 	"github.com/NYTimes/gziphandler"
-	"github.com/Sirupsen/logrus"
 	"github.com/fsouza/ctxlogger"
+	"github.com/sirupsen/logrus"
 )
 
 type (

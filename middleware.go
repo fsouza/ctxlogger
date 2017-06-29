@@ -9,7 +9,7 @@ import (
 	"net/http"
 
 	"github.com/NYTimes/gizmo/web"
-	"github.com/Sirupsen/logrus"
+	"github.com/sirupsen/logrus"
 )
 
 // ContextKey is the key used by the middleware to set the logger.

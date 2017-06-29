@@ -15,7 +15,7 @@ import (
 	"testing"
 
 	"github.com/NYTimes/gizmo/web"
-	"github.com/Sirupsen/logrus"
+	"github.com/sirupsen/logrus"
 )
 
 func TestContextLoggerMiddleware(t *testing.T) {

@@ -4,8 +4,8 @@ import (
 	"net/http"
 
 	"github.com/NYTimes/gizmo/web"
-	"github.com/Sirupsen/logrus"
 	"github.com/fsouza/ctxlogger"
+	"github.com/sirupsen/logrus"
 )
 
 func (s *SimpleService) getMostPopular(r *http.Request) (int, interface{}, error) {
