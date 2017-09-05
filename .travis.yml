@@ -5,7 +5,6 @@ go:
   - 1.9
   - tip
 install:
-  - export GOROOT=$(go env GOROOT)
   - make testdeps
 script:
   - make lint coverage
