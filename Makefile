@@ -14,10 +14,11 @@ lint: testdeps
 	gometalinter --install --vendored-linters
 	go install
 	go list -f '{{.TestImports}}' | sed -e 's/\[\(.*\)\]/\1/' | tr ' ' '\n' | grep '^.*\..*/.*$$' | xargs go install
-	gometalinter -j 4 --enable-all --line-length=120 --deadline=10m --tests
+	gometalinter -j 4 --enable-all --disable=dupl --line-length=120 --deadline=10m --tests
 
 gotest: testdeps
 	go test -race
 
 testdeps:
-	go get -d -t
+	go get github.com/golang/dep/cmd/dep
+	dep ensure -v
