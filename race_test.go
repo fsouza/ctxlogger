@@ -14,19 +14,23 @@ import (
 	"github.com/tsuru/tsuru/safe"
 )
 
-type safeFakeHook struct {
+type goroutineHook struct {
 	test.Hook
-	mtx sync.Mutex
+	t *testing.T
 }
 
-func (h *safeFakeHook) Fire(e *logrus.Entry) error {
-	h.mtx.Lock()
-	defer h.mtx.Unlock()
-	return h.Hook.Fire(e)
+func (h *goroutineHook) Fire(e *logrus.Entry) error {
+	go func() {
+		h.Hook.Fire(e)
+		for k, v := range e.Data {
+			h.t.Logf("%s: %v", k, v)
+		}
+	}()
+	return nil
 }
 
 func TestVarsLoggerIsSafe(t *testing.T) {
-	var fakeHook safeFakeHook
+	var fakeHook test.Hook
 	const N = 32
 	var b safe.Buffer
 	logger := logrus.New()
@@ -49,6 +53,34 @@ func TestVarsLoggerIsSafe(t *testing.T) {
 		t.Errorf("wrong log lines returned, wanted %d log lines, got %d:\n%s", N, len(logLines), b.String())
 	}
 	if len(fakeHook.Entries) != N {
+		t.Errorf("wrong number of entries in the hook. want %d, got %d", N, len(fakeHook.Entries))
+	}
+}
+
+func TestAlwaysFirstInTheListOfLoggers(t *testing.T) {
+	fakeHook := goroutineHook{t: t}
+	const N = 32
+	var b safe.Buffer
+	logger := logrus.New()
+	logger.Out = &b
+	logger.Level = logrus.DebugLevel
+	logger.Formatter = &logrus.JSONFormatter{}
+	logger.Hooks.Add(&fakeHook)
+	var wg sync.WaitGroup
+	for i := 0; i < N; i++ {
+		wg.Add(1)
+		go func(i int) {
+			innerLogger := varsLogger(map[string]string{"name": "gopher"}, logger)
+			innerLogger.WithField("some", "thing").Info("be advised")
+			wg.Done()
+		}(i)
+	}
+	wg.Wait()
+	logLines := strings.Split(strings.TrimSpace(b.String()), "\n")
+	if len(logLines) != N {
+		t.Errorf("wrong log lines returned, wanted %d log lines, got %d:\n%s", N, len(logLines), b.String())
+	}
+	if len(fakeHook.AllEntries()) != N {
 		t.Errorf("wrong number of entries in the hook. want %d, got %d", N, len(fakeHook.Entries))
 	}
 }
