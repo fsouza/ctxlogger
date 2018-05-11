@@ -53,7 +53,7 @@ func TestVarsLoggerIsSafe(t *testing.T) {
 		t.Errorf("wrong log lines returned, wanted %d log lines, got %d:\n%s", N, len(logLines), b.String())
 	}
 	if len(fakeHook.Entries) != N {
-		t.Errorf("wrong number of entries in the hook. want %d, got %d", N, len(fakeHook.Entries))
+		t.Errorf("wrong number of entries in the hook. want %d, got %d", N, len(fakeHook.AllEntries()))
 	}
 }
 
