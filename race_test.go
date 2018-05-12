@@ -7,6 +7,7 @@ package ctxlogger
 import (
 	"strings"
 	"sync"
+	"sync/atomic"
 	"testing"
 
 	"github.com/sirupsen/logrus"
@@ -16,15 +17,16 @@ import (
 
 type goroutineHook struct {
 	test.Hook
-	t *testing.T
+	t        *testing.T
+	nentries int32
 }
 
 func (h *goroutineHook) Fire(e *logrus.Entry) error {
 	go func() {
-		h.Hook.Fire(e)
 		for k, v := range e.Data {
 			h.t.Logf("%s: %v", k, v)
 		}
+		atomic.AddInt32(&h.nentries, 1)
 	}()
 	return nil
 }
@@ -80,7 +82,8 @@ func TestAlwaysFirstInTheListOfLoggers(t *testing.T) {
 	if len(logLines) != N {
 		t.Errorf("wrong log lines returned, wanted %d log lines, got %d:\n%s", N, len(logLines), b.String())
 	}
-	if len(fakeHook.AllEntries()) != N {
-		t.Errorf("wrong number of entries in the hook. want %d, got %d", N, len(fakeHook.Entries))
+	nentries := atomic.LoadInt32(&fakeHook.nentries)
+	if nentries != N {
+		t.Errorf("wrong number of entries in the hook. want %d, got %d", N, nentries)
 	}
 }
