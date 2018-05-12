@@ -9,6 +9,7 @@ import (
 	"sync"
 	"sync/atomic"
 	"testing"
+	"time"
 
 	"github.com/sirupsen/logrus"
 	"github.com/sirupsen/logrus/hooks/test"
@@ -74,6 +75,7 @@ func TestAlwaysFirstInTheListOfLoggers(t *testing.T) {
 		go func(i int) {
 			innerLogger := varsLogger(map[string]string{"name": "gopher"}, logger)
 			innerLogger.WithField("some", "thing").Info("be advised")
+			time.Sleep(500 * time.Millisecond)
 			wg.Done()
 		}(i)
 	}
