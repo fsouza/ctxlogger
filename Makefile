@@ -4,17 +4,21 @@
 
 all: test
 
-test: lint gotest
+test: testdeps lint gotest
 
 coverage: testdeps
 	go test -race -coverprofile coverage.txt -covermode=atomic
 
-lint: testdeps
+lint: lintdeps golint
+
+golint:
 	golangci-lint run --enable-all -D errcheck -D lll -D dupl -D gochecknoglobals -D scopelint --deadline 5m
 
-gotest: testdeps
+gotest:
 	go test -race
+
+lintdeps:
+	cd /tmp && go get github.com/golangci/golangci-lint/cmd/golangci-lint
 
 testdeps:
 	go mod download
-	cd /tmp && go get github.com/golangci/golangci-lint/cmd/golangci-lint

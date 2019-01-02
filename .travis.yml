@@ -6,8 +6,9 @@ go:
 env:
   - GO111MODULE=on
 install:
+  - go install github.com/golangci/golangci-lint/cmd/golangci-lint
   - make testdeps
 script:
-  - make lint coverage
+  - make golint coverage
 after_success:
   - bash <(curl -s https://codecov.io/bash)
