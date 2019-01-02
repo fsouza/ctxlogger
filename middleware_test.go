@@ -14,7 +14,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/NYTimes/gizmo/web"
+	"github.com/NYTimes/gizmo/server"
 	"github.com/sirupsen/logrus"
 )
 
@@ -89,7 +89,7 @@ func TestContextLoggerMiddleware(t *testing.T) {
 		t.Run(test.testCase, func(t *testing.T) {
 			req, _ := http.NewRequest(http.MethodGet, "/something", nil)
 			req.Header = test.header
-			web.SetRouteVars(req, test.vars)
+			server.SetRouteVars(req, test.vars)
 			rec := httptest.NewRecorder()
 			var b bytes.Buffer
 			logger := logrus.New()

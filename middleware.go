@@ -8,7 +8,7 @@ import (
 	"context"
 	"net/http"
 
-	"github.com/NYTimes/gizmo/web"
+	"github.com/NYTimes/gizmo/server"
 	"github.com/sirupsen/logrus"
 )
 
@@ -27,7 +27,7 @@ func ContextLogger(baseLogger *logrus.Logger) func(h http.Handler) http.Handler 
 	return func(h http.Handler) http.Handler {
 		return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
 			logger := baseLogger
-			vars := web.Vars(r)
+			vars := server.Vars(r)
 			if reqID := r.Header.Get("X-Request-Id"); reqID != "" {
 				if vars == nil {
 					vars = make(map[string]string)
