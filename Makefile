@@ -10,15 +10,11 @@ coverage: testdeps
 	go test -race -coverprofile coverage.txt -covermode=atomic
 
 lint: testdeps
-	go get github.com/alecthomas/gometalinter
-	gometalinter --install --vendored-linters
-	go install
-	go list -f '{{.TestImports}}' | sed -e 's/\[\(.*\)\]/\1/' | tr ' ' '\n' | grep '^.*\..*/.*$$' | xargs go install
-	gometalinter -j 4 --fast --disable=dupl --line-length=120 --deadline=10m --tests
+	golangci-lint run --enable-all -D errcheck -D lll -D dupl -D gochecknoglobals -D scopelint --deadline 5m
 
 gotest: testdeps
 	go test -race
 
 testdeps:
-	go get github.com/golang/dep/cmd/dep
-	dep ensure -v
+	go mod download
+	cd /tmp && go get github.com/golangci/golangci-lint/cmd/golangci-lint
