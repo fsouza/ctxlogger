@@ -1,14 +1,10 @@
 [[constraint]]
-  branch = "master"
   name = "github.com/NYTimes/gizmo"
-
-[[constraint]]
-  name = "github.com/NYTimes/gziphandler"
-  version = "1.0.1"
+  version = "0.4.0"
 
 [[constraint]]
   name = "github.com/sirupsen/logrus"
-  version = "1.0.4"
+  version = "1.2.0"
 
 [[constraint]]
   name = "github.com/tsuru/tsuru"
