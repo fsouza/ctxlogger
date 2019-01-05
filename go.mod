@@ -7,7 +7,7 @@ require (
 	github.com/prometheus/client_golang v0.9.2 // indirect
 	github.com/prometheus/common v0.0.0-20181218105931-67670fe90761 // indirect
 	github.com/prometheus/procfs v0.0.0-20190102135031-14fa7590c24d // indirect
-	github.com/sirupsen/logrus v1.2.0
+	github.com/sirupsen/logrus v1.3.0
 	github.com/tsuru/tsuru v0.0.0-20190102152935-cb605053d452
 	golang.org/x/crypto v0.0.0-20190102171810-8d7daa0c54b3 // indirect
 	golang.org/x/net v0.0.0-20181220203305-927f97764cc3 // indirect
