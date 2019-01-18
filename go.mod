@@ -1,7 +1,7 @@
 module github.com/fsouza/ctxlogger
 
 require (
-	github.com/NYTimes/gizmo v0.4.0
+	github.com/NYTimes/gizmo v0.4.1
 	github.com/influxdata/influxdb v1.7.2 // indirect
 	github.com/influxdata/platform v0.0.0-20190102191728-0ddf6b358855 // indirect
 	github.com/prometheus/client_golang v0.9.2 // indirect
