@@ -5,6 +5,7 @@
 package ctxlogger
 
 import (
+	"bytes"
 	"strings"
 	"sync"
 	"sync/atomic"
@@ -13,7 +14,6 @@ import (
 
 	"github.com/sirupsen/logrus"
 	"github.com/sirupsen/logrus/hooks/test"
-	"github.com/tsuru/tsuru/safe"
 )
 
 type goroutineHook struct {
@@ -35,9 +35,9 @@ func (h *goroutineHook) Fire(e *logrus.Entry) error {
 func TestVarsLoggerIsSafe(t *testing.T) {
 	var fakeHook test.Hook
 	const N = 32
-	var b safe.Buffer
+	var b bytes.Buffer
 	logger := logrus.New()
-	logger.Out = &b
+	logger.Out = &safeWriter{w: &b}
 	logger.Level = logrus.DebugLevel
 	logger.Formatter = &logrus.JSONFormatter{}
 	logger.Hooks.Add(&fakeHook)
@@ -63,9 +63,9 @@ func TestVarsLoggerIsSafe(t *testing.T) {
 func TestAlwaysFirstInTheListOfLoggers(t *testing.T) {
 	fakeHook := goroutineHook{t: t}
 	const N = 32
-	var b safe.Buffer
+	var b bytes.Buffer
 	logger := logrus.New()
-	logger.Out = &b
+	logger.Out = &safeWriter{w: &b}
 	logger.Level = logrus.DebugLevel
 	logger.Formatter = &logrus.JSONFormatter{}
 	logger.Hooks.Add(&fakeHook)
