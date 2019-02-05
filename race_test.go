@@ -44,11 +44,11 @@ func TestVarsLoggerIsSafe(t *testing.T) {
 	var wg sync.WaitGroup
 	for i := 0; i < N; i++ {
 		wg.Add(1)
-		go func(i int) {
+		go func() {
 			innerLogger := varsLogger(map[string]string{"name": "gopher"}, logger)
 			innerLogger.WithField("some", "thing").Info("be advised")
 			wg.Done()
-		}(i)
+		}()
 	}
 	wg.Wait()
 	logLines := strings.Split(strings.TrimSpace(b.String()), "\n")
@@ -72,12 +72,12 @@ func TestAlwaysFirstInTheListOfLoggers(t *testing.T) {
 	var wg sync.WaitGroup
 	for i := 0; i < N; i++ {
 		wg.Add(1)
-		go func(i int) {
+		go func() {
 			innerLogger := varsLogger(map[string]string{"name": "gopher"}, logger)
 			innerLogger.WithField("some", "thing").Info("be advised")
 			time.Sleep(500 * time.Millisecond)
 			wg.Done()
-		}(i)
+		}()
 	}
 	wg.Wait()
 	logLines := strings.Split(strings.TrimSpace(b.String()), "\n")
