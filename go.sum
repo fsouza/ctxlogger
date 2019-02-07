@@ -13,8 +13,8 @@ git.apache.org/thrift.git v0.0.0-20180902110319-2566ecd5d999/go.mod h1:fPE2ZNJGy
 git.apache.org/thrift.git v0.0.0-20181218151757-9b75e4fe745a/go.mod h1:fPE2ZNJGynbRyZ4dJvy6G277gSllfV2HJqblrnkyeyg=
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
 github.com/DataDog/zstd v1.3.5/go.mod h1:1jcaCB/ufaK+sKp1NBhlGmpz41jOoPQ35bpF36t7BBo=
-github.com/NYTimes/gizmo v1.0.0 h1:YOCKccliVETkXeWZCsy/OOZfU+ZWB40G3tp3CxKCNTU=
-github.com/NYTimes/gizmo v1.0.0/go.mod h1:2ztG7bjubqWNqnLHemuj37sV7ejgbUKUuB18+bbdEzs=
+github.com/NYTimes/gizmo v1.1.0 h1:FRpK722pRMan/+SESrb7rcbp5JJuJE+r77RxwlO6Rsw=
+github.com/NYTimes/gizmo v1.1.0/go.mod h1:2ztG7bjubqWNqnLHemuj37sV7ejgbUKUuB18+bbdEzs=
 github.com/NYTimes/gziphandler v1.0.1 h1:iLrQrdwjDd52kHDA5op2UBJFjmOb9g+7scBan4RN8F0=
 github.com/NYTimes/gziphandler v1.0.1/go.mod h1:3wb06e3pkSAbeQ52E9H9iFoQsEEwGN64994WTCIhntQ=
 github.com/NYTimes/logrotate v0.0.0-20170824154650-2b6e866fd507 h1:S0NXkQpfmcwUz5kHr2G8fqepsknsnNr9j6uQqdTYEck=
