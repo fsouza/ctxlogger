@@ -3,6 +3,7 @@ sudo: false
 cache:
   directories:
     - $GOPATH/pkg
+    - $GOPATH/bin
 go:
   - 1.x
   - tip
