@@ -13,8 +13,8 @@ git.apache.org/thrift.git v0.0.0-20180902110319-2566ecd5d999/go.mod h1:fPE2ZNJGy
 git.apache.org/thrift.git v0.0.0-20181218151757-9b75e4fe745a/go.mod h1:fPE2ZNJGynbRyZ4dJvy6G277gSllfV2HJqblrnkyeyg=
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
 github.com/DataDog/zstd v1.3.5/go.mod h1:1jcaCB/ufaK+sKp1NBhlGmpz41jOoPQ35bpF36t7BBo=
-github.com/NYTimes/gizmo v1.2.2 h1:zvqqQ2GUPn6uvILERi1YeCOTVuT99zAedVbGIAxm/p0=
-github.com/NYTimes/gizmo v1.2.2/go.mod h1:+Ic0KePzIxrkcfIXnII7WMmrciukqbXuQcTOWAzJQNg=
+github.com/NYTimes/gizmo v1.2.3 h1:HFXNsY4WDp8V0bV7ccZJh01t4f/hfSABrvN/G1t9mVA=
+github.com/NYTimes/gizmo v1.2.3/go.mod h1:+Ic0KePzIxrkcfIXnII7WMmrciukqbXuQcTOWAzJQNg=
 github.com/NYTimes/logrotate v1.0.0 h1:6jFGbon6jOtpy3t3kwZZKS4Gdmf1C/Wv5J4ll4Xn5yk=
 github.com/NYTimes/logrotate v1.0.0/go.mod h1:GxNz1cSw1c6t99PXoZlw+nm90H6cyQyrH66pjVv7x88=
 github.com/Shopify/sarama v1.20.1/go.mod h1:FVkBWblsNy7DGZRfXLU0O9RCGt5g3g3yEuWXgklEdEo=
