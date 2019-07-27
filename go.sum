@@ -15,6 +15,8 @@ github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03
 github.com/DataDog/zstd v1.3.5/go.mod h1:1jcaCB/ufaK+sKp1NBhlGmpz41jOoPQ35bpF36t7BBo=
 github.com/NYTimes/gizmo v1.2.9 h1:DzAWlQBS7ZU4BlrJr6/U+A3Od1M1LH5sVuCpbwDsqgI=
 github.com/NYTimes/gizmo v1.2.9/go.mod h1:+Ic0KePzIxrkcfIXnII7WMmrciukqbXuQcTOWAzJQNg=
+github.com/NYTimes/gizmo v1.2.10 h1:0M2wSXQIlolVTyChFnBnXwqxhnheVKj6rk8YnXBEk9U=
+github.com/NYTimes/gizmo v1.2.10/go.mod h1:+Ic0KePzIxrkcfIXnII7WMmrciukqbXuQcTOWAzJQNg=
 github.com/NYTimes/logrotate v1.0.0 h1:6jFGbon6jOtpy3t3kwZZKS4Gdmf1C/Wv5J4ll4Xn5yk=
 github.com/NYTimes/logrotate v1.0.0/go.mod h1:GxNz1cSw1c6t99PXoZlw+nm90H6cyQyrH66pjVv7x88=
 github.com/Shopify/sarama v1.20.1/go.mod h1:FVkBWblsNy7DGZRfXLU0O9RCGt5g3g3yEuWXgklEdEo=
