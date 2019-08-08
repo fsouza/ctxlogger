@@ -2,7 +2,6 @@ language: go
 sudo: false
 go:
   - 1.x
-  - tip
 env:
   global:
     - GO111MODULE=on
@@ -14,6 +13,3 @@ script:
   - make golint coverage
 after_success:
   - bash <(curl -s https://codecov.io/bash)
-matrix:
-  allow_failures:
-    - go: tip
