@@ -1,0 +1,33 @@
+name: Go
+on: [push, pull_request]
+jobs:
+  build:
+    strategy:
+      matrix:
+        go_version: [1.11.13, 1.12.8, 1.13beta1]
+
+    name: Go ${{ matrix.go_version }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-go@v1
+        id: go
+        with:
+          version: ${{ matrix.go_version }}
+
+      - uses: actions/checkout@master
+
+      - name: install-deps
+        run: make testdeps
+        env:
+          GOPROXY: https://proxy.golang.org
+
+      - name: run-linter
+        uses: docker://golangci/golangci-lint
+        env:
+          GOROOT: /usr/local/go
+        with:
+          entrypoint: make
+          args: golint
+
+      - name: run-tests
+        run: make coverage
