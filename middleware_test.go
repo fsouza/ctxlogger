@@ -18,6 +18,7 @@ import (
 	"github.com/sirupsen/logrus"
 )
 
+// nolint:funlen
 func TestContextLoggerMiddleware(t *testing.T) {
 	var tests = []struct {
 		testCase    string
