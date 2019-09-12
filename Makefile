@@ -18,7 +18,7 @@ gotest:
 	go test -race
 
 lintdeps:
-	cd /tmp && go get github.com/golangci/golangci-lint/cmd/golangci-lint
+	cd /tmp && GO111MODULE=on go get github.com/golangci/golangci-lint/cmd/golangci-lint@latest
 
 testdeps:
 	go mod download
