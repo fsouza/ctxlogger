@@ -12,7 +12,7 @@ coverage: testdeps
 lint: lintdeps golint
 
 golint:
-	golangci-lint run --enable-all -D errcheck -D lll -D dupl -D gochecknoglobals -D scopelint --deadline 5m
+	golangci-lint run
 
 gotest:
 	go test -race
