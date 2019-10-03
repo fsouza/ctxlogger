@@ -27,7 +27,7 @@ jobs:
       - uses: actions/checkout@v1.0.0
 
       - name: install-deps
-        run: make testdeps
+        run: go mod download
         env:
           GOPROXY: https://proxy.golang.org
 
@@ -35,9 +35,10 @@ jobs:
         uses: docker://golangci/golangci-lint
         env:
           GOROOT: /usr/local/go
+          GOPROXY: https://proxy.golang.org
         with:
-          entrypoint: make
-          args: golint
+          entrypoint: golangci-lint
+          args: run
 
       - name: run-tests
-        run: make coverage
+        run: go test -cover -race -vet all
