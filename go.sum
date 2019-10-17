@@ -5,14 +5,6 @@ contrib.go.opencensus.io/exporter/stackdriver v0.12.2/go.mod h1:iwB6wGarfphGGe/e
 contrib.go.opencensus.io/resource v0.1.1/go.mod h1:F361eGI91LCmW1I/Saf+rX0+OFcigGlFvXwEGEnkRLA=
 github.com/BurntSushi/toml v0.3.1/go.mod h1:xHWCNGjB5oqiDr8zfno3MHue2Ht5sIBksp03qcyfWMU=
 github.com/DataDog/zstd v1.3.6-0.20190409195224-796139022798/go.mod h1:1jcaCB/ufaK+sKp1NBhlGmpz41jOoPQ35bpF36t7BBo=
-github.com/NYTimes/gizmo v1.2.14 h1:JvS7HxJI8QRgifnxPyCDof8tGYy0nz6eO93UWqZ2ypo=
-github.com/NYTimes/gizmo v1.2.14/go.mod h1:gb8iDOhy/u7Go0HsGgc7rQ9m3tA7bgbUndgeX4my1Ns=
-github.com/NYTimes/gizmo v1.2.15 h1:UhzIueyIlEG+uLC6JtBr+V71mJqs5QoCWmgRLuRoYr8=
-github.com/NYTimes/gizmo v1.2.15/go.mod h1:VrLp1P5VCMp2EKhePiIpbwtAEtofUL2HsrD220/BCL4=
-github.com/NYTimes/gizmo v1.2.16 h1:YdnzVuuvJ34+j09abIgSVQqSWcLzbWQrBjczFT3cTMc=
-github.com/NYTimes/gizmo v1.2.16/go.mod h1:VrLp1P5VCMp2EKhePiIpbwtAEtofUL2HsrD220/BCL4=
-github.com/NYTimes/gizmo v1.2.17 h1:C++NxpLrnBmPxFSLAj8EmJorFIRFriIHfuShHKuhbFk=
-github.com/NYTimes/gizmo v1.2.17/go.mod h1:VrLp1P5VCMp2EKhePiIpbwtAEtofUL2HsrD220/BCL4=
 github.com/NYTimes/gizmo v1.3.0 h1:VPy0xEYx8cQiK4UPKbHNr/TL1YBSM2H1zV1GLnikFuc=
 github.com/NYTimes/gizmo v1.3.0/go.mod h1:VrLp1P5VCMp2EKhePiIpbwtAEtofUL2HsrD220/BCL4=
 github.com/NYTimes/logrotate v1.0.0 h1:6jFGbon6jOtpy3t3kwZZKS4Gdmf1C/Wv5J4ll4Xn5yk=
@@ -31,8 +23,6 @@ github.com/davecgh/go-spew v1.1.1/go.mod h1:J7Y8YcW2NihsgmVo/mv3lAwl/skON4iLHjSs
 github.com/eapache/go-resiliency v1.1.0/go.mod h1:kFI+JgMyC7bLPUVY133qvEBtVayf5mFgVsvEsIPBvNs=
 github.com/eapache/go-xerial-snappy v0.0.0-20180814174437-776d5712da21/go.mod h1:+020luEh2TKB4/GOp8oxxtq0Daoen/Cii55CzbTV6DU=
 github.com/eapache/queue v1.1.0/go.mod h1:6eCeP0CKFpHLu8blIFXhExK/dRa7WDZfr6jVFPTqq+I=
-github.com/go-kit/kit v0.8.0 h1:Wz+5lgoB0kkuqLEc6NVmwRknTKP6dTGbSqvhZtBI/j0=
-github.com/go-kit/kit v0.8.0/go.mod h1:xBxKIO96dXMWWy0MnWVtmwkA9/13aqxPnvrjFYMA2as=
 github.com/go-kit/kit v0.9.0/go.mod h1:xBxKIO96dXMWWy0MnWVtmwkA9/13aqxPnvrjFYMA2as=
 github.com/go-logfmt/logfmt v0.4.0 h1:MP4Eh7ZCb31lleYCFuwm0oe4/YGak+5l1vA2NOE80nA=
 github.com/go-logfmt/logfmt v0.4.0/go.mod h1:3RMwSq7FuexP4Kalkev3ejPJsZTpXXBr9+V4qmtdjCk=
