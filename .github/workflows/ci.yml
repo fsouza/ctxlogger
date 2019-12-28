@@ -16,16 +16,19 @@ jobs:
           - 1.12.x
           - 1.13.x
           - 1.14.x
+        os:
+          - macos
+          - ubuntu
 
-    name: Go ${{ matrix.go_version }}
-    runs-on: ubuntu-latest
+    name: Build (${{ matrix.os }}/go-${{ matrix.go_version }})
+    runs-on: ${{ matrix.os }}-latest
     steps:
-      - uses: actions/setup-go@v1.0.2
+      - uses: actions/setup-go@master
         id: go
         with:
           go-version: ${{ matrix.go_version }}
 
-      - uses: actions/checkout@v1.0.0
+      - uses: actions/checkout@master
 
       - name: install deps
         run: |
