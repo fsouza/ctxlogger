@@ -27,7 +27,7 @@ jobs:
         id: go
         with:
           stable: false
-          go-version: "v${{ matrix.go_version }}"
+          go-version: "^${{ matrix.go_version }}"
 
       - uses: actions/checkout@master
 
