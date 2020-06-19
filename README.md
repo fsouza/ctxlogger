@@ -1,6 +1,6 @@
 # ctxlogger
 
-[![Build Status](https://github.com/fsouza/ctxlogger/workflows/Build/badge.svg)](https://github.com/fsouza/ctxlogger/actions?query=branch:master+workflow:Build)
+[![Build Status](https://github.com/fsouza/ctxlogger/workflows/Build/badge.svg)](https://github.com/fsouza/ctxlogger/actions?query=branch:main+workflow:Build)
 
 [Gizmo](https://github.com/NYTimes/gizmo) middleware that adds a logger to the
 context, including any path variables as logrus fields.
