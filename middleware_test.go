@@ -6,6 +6,7 @@ package ctxlogger
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 	"fmt"
 	"net/http"
@@ -20,7 +21,7 @@ import (
 
 // nolint:funlen
 func TestContextLoggerMiddleware(t *testing.T) {
-	var tests = []struct {
+	tests := []struct {
 		testCase    string
 		header      http.Header
 		vars        map[string]string
@@ -88,7 +89,7 @@ func TestContextLoggerMiddleware(t *testing.T) {
 	})
 	for _, test := range tests {
 		t.Run(test.testCase, func(t *testing.T) {
-			req, _ := http.NewRequest(http.MethodGet, "/something", nil)
+			req, _ := http.NewRequestWithContext(context.TODO(), http.MethodGet, "/something", nil)
 			req.Header = test.header
 			server.SetRouteVars(req, test.vars)
 			rec := httptest.NewRecorder()
