@@ -1,7 +1,7 @@
 module github.com/fsouza/ctxlogger
 
 require (
-	github.com/NYTimes/gizmo v1.3.5
+	github.com/NYTimes/gizmo v1.3.6
 	github.com/sirupsen/logrus v1.6.0
 )
 
