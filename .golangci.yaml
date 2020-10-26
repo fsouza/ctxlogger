@@ -6,6 +6,7 @@ linters:
   disable:
     - dupl
     - errcheck
+    - exhaustivestruct
     - gochecknoglobals
     - gomnd
     - lll
