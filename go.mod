@@ -5,4 +5,4 @@ require (
 	github.com/sirupsen/logrus v1.7.1
 )
 
-go 1.14
+go 1.15
